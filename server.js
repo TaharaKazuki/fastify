@@ -1,11 +1,15 @@
-import Fastify from "fastify";
-const fastify = Fastify({ logger: true })
+import fastify from "fastify";
+import itemRoutes from "./routes/users";
+const server = fastify({ logger: true })
+
+console.info(itemRoutes)
+server.register(itemRoutes)
 
 const PORT = 5000
 
 const start = async () => {
-  await fastify.listen(PORT).catch((error) => {
-    fastify.log.error(error)
+  await server.listen(PORT).catch((error) => {
+    server.log.error(error)
     process.exit(1)
   })
   console.info('server start')
