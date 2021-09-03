@@ -1,2 +1,5 @@
-### GET ALL ITEMS
-GET http://localhost:5000/ HTTP/1.1
+### GET ALL User
+GET http://localhost:5000/users HTTP/1.1
+
+### GET User
+GET http://localhost:5000/users/1 HTTP/1.1
