@@ -1,8 +1,15 @@
 import fastify from "fastify";
 import itemRoutes from "./routes/users";
-const server = fastify({ logger: true })
+import fastifySwagger from "fastify-swagger";
 
-console.info(itemRoutes)
+const server = fastify({ logger: true })
+server.register(fastifySwagger,{
+  exposeRoute: true,
+  routePrefix: '/docs',
+  swagger: {
+    info: { title: 'fastify-api'}
+  }
+})
 server.register(itemRoutes)
 
 const PORT = 5000

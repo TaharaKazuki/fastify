@@ -1,4 +1,4 @@
-import { getItem } from "../controllers/users";
+import { getUsers, getUser } from "../controllers/users";
 
 const UserSchema = {
   type: 'object',
@@ -17,11 +17,23 @@ const getUsersOpts = {
       }
     }
   },
-  handler: getItem
+  handler: getUsers
+}
+
+const getUserOpts = {
+  schema: {
+    response: {
+      200: UserSchema
+    }
+  },
+  handler: getUser
 }
 
 const itemRoutes = (fastify, _options, done) => {
   fastify.get('/users', getUsersOpts)
+
+  fastify.get('/users/:id', getUserOpts)
+
   done()
 }
 
