@@ -19,7 +19,7 @@ const start = async () => {
     server.log.error(error)
     process.exit(1)
   })
-  console.info('server start')
+  console.info(`server start: ${PORT}`)
 }
 
 start()
