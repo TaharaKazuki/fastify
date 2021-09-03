@@ -1,0 +1,21 @@
+{
+  "name": "fastify",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node -r esm",
+    "dev": "nodemon -r esm"
+  },
+  "repository": "git@github.com:TaharaKazuki/fastify.git",
+  "author": "田原 一樹 <kazuki.tahara@rarejob.co.jp>",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "fastify": "^3.20.2",
+    "fastify-swagger": "^4.9.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
