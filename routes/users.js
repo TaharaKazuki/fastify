@@ -1,4 +1,4 @@
-import { getUsers, getUser } from "../controllers/users";
+import { getUsers, getUser, addUser } from "../controllers/users";
 
 const UserSchema = {
   type: 'object',
@@ -29,10 +29,28 @@ const getUserOpts = {
   handler: getUser
 }
 
+const postItemOpts = {
+  schema: {
+    body: {
+      type: 'object',
+      required: ['name'],
+      properties: {
+        name: { type: 'string' },
+      },
+    },
+    response: {
+      201: UserSchema,
+    },
+  },
+  handler: addUser,
+}
+
 const itemRoutes = (fastify, _options, done) => {
   fastify.get('/users', getUsersOpts)
 
   fastify.get('/users/:id', getUserOpts)
+
+  fastify.post('/users', postItemOpts)
 
   done()
 }
