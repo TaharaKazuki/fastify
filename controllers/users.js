@@ -22,3 +22,19 @@ export const addUser = (req, reply) => {
   USERS = [...USERS, newUser]
   reply.code(201).send(newUser)
 }
+
+export const deleteUser = (req, reply) => {
+  const { id } = req.params
+  USERS = USERS.filter((user) => user.id === id)
+
+  reply.send({ message: `User ${id} has been removed` })
+}
+
+export const updateUser = (req, reply) => {
+  const { id } = req.params
+  const { name } = req.body
+  const user = USERS.find((user) => user.id === id)
+  USERS = USERS.map((user) => user.id === id ? { id, name }: user)
+
+  reply.send(user)
+}
