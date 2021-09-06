@@ -45,6 +45,29 @@ const postItemOpts = {
   handler: addUser,
 }
 
+const deleteUserOpts = {
+  schema: {
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          message: { type: 'string' }
+        }
+      }
+    }
+  },
+  // handler 
+}
+
+const updateUserOpts = {
+  schema: {
+    response: {
+      200: UserSchema
+    }
+  },
+  handler
+}
+
 const itemRoutes = (fastify, _options, done) => {
   fastify.get('/users', getUsersOpts)
 
