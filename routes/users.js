@@ -1,4 +1,4 @@
-import { getUsers, getUser, addUser } from "../controllers/users";
+import { getUsers, getUser, addUser, deleteUser, updateUser } from "../controllers/users";
 
 const UserSchema = {
   type: 'object',
@@ -45,18 +45,18 @@ const postItemOpts = {
   handler: addUser,
 }
 
-const deleteUserOpts = {
+const deleteItemOpts = {
   schema: {
     response: {
       200: {
         type: 'object',
         properties: {
-          message: { type: 'string' }
-        }
-      }
-    }
+          message: { type: 'string' },
+        },
+      },
+    },
   },
-  // handler 
+  handler: deleteUser,
 }
 
 const updateUserOpts = {
@@ -65,7 +65,7 @@ const updateUserOpts = {
       200: UserSchema
     }
   },
-  handler
+  handler: updateUser
 }
 
 const itemRoutes = (fastify, _options, done) => {
@@ -74,6 +74,10 @@ const itemRoutes = (fastify, _options, done) => {
   fastify.get('/users/:id', getUserOpts)
 
   fastify.post('/users', postItemOpts)
+
+  fastify.delete('/users/:id', deleteItemOpts)
+
+  fastify.put('/users/:id', updateUserOpts)
 
   done()
 }

@@ -25,7 +25,7 @@ export const addUser = (req, reply) => {
 
 export const deleteUser = (req, reply) => {
   const { id } = req.params
-  USERS = USERS.filter((user) => user.id === id)
+  USERS = USERS.filter((user) => user.id !== id)
 
   reply.send({ message: `User ${id} has been removed` })
 }
