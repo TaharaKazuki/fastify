@@ -7,7 +7,7 @@
     "dev": "nodemon -r esm"
   },
   "repository": "git@github.com:TaharaKazuki/fastify.git",
-  "author": "田原 一樹 <kazuki.tahara@rarejob.co.jp>",
+  "author": "田原 一樹",
   "license": "MIT",
   "dependencies": {
     "esm": "^3.2.25",
